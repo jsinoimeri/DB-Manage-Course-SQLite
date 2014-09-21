@@ -1,4 +1,4 @@
-Database-Management-Course-SQLite
+DB-Management-Course-SQLite
 =================================
 
 Database management course using SQLite
