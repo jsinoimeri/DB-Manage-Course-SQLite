@@ -5,6 +5,7 @@ Database management course using SQLite
 
 
 Assignment 1:
+
               assign1.sql contains sqlite insert commands for the data from bookcode 
               RBV of the Fake Book Song to be inserted into a classwide database
               
