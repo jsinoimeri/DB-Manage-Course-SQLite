@@ -41,3 +41,8 @@ Assignment 2:
               
               
 Assignment 3:
+
+              This assignment has 2 parts to it. First part is Queries with Relational Algebra
+              problem sets. The second part is Accessing Fake Book Data From Java
+              
+              
