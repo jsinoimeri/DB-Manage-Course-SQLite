@@ -168,11 +168,12 @@ public class GUI extends JFrame implements DialogClient{
 		
 		String searchPrototype = view.getSearchText().getText().trim();
 		
-		String sqlQueryString = "select * from songs where title like '%" + searchPrototype + "%'";
+		String sqlQueryString = "select * from songs where title = ?";
 		
 		// from here up to the try statement is part C.
 		
 		boolean specialCase = false;
+		boolean invalidEntry = false;
 		
 		//check some special cases
         if(searchPrototype.equals("*") || searchPrototype.equals("%") || searchPrototype.equals(""))
@@ -180,13 +181,21 @@ public class GUI extends JFrame implements DialogClient{
         	sqlQueryString = "select * from songs";
         	specialCase = true;
         }
+        
+        
+        // outputs invalid sql command if there is a sql insertion in the gui
+        if (searchPrototype.startsWith("Select *") || searchPrototype.startsWith("select *") || searchPrototype.startsWith("SELECT *") )
+        {
+        	sqlQueryString = "select * from songs";
+        	invalidEntry = true;
+        	System.out.println("\nInvalid sql command \n");
+        }
+        
+		if (selectedBook != null && !specialCase && !invalidEntry)
+			sqlQueryString += " and bookcode = ?";
 		
-		
-		if (selectedBook != null && !specialCase)
-			sqlQueryString += " and bookcode = '" + selectedBook.getBookCode() + "'";
-		
-		else if (specialCase && selectedBook != null)
-			sqlQueryString += " where bookcode = '" + selectedBook.getBookCode() + "'";
+		else if (specialCase && selectedBook != null && !invalidEntry)
+			sqlQueryString += " where bookcode = ?";
 		
 		
 		sqlQueryString += " order by title asc;";
@@ -199,6 +208,16 @@ public class GUI extends JFrame implements DialogClient{
 	    	
 	    	// part D
 	    	PreparedStatement select = this.databaseConnection.prepareStatement(sqlQueryString);
+	    	
+	    	if (!specialCase && !invalidEntry)
+	    		select.setString(1, searchPrototype);
+	    	
+	    	if (selectedBook != null && specialCase && !invalidEntry)
+	    		select.setString(1, selectedBook.getBookCode());
+	    	
+	    	else if (selectedBook != null && !specialCase && !invalidEntry)
+	    		select.setString(2, selectedBook.getBookCode());
+	    	
 			select.execute();
 	    	
 			ResultSet rs = select.getResultSet();
