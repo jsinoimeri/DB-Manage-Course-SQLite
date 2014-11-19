@@ -42,7 +42,16 @@ Assignment 2:
               
 Assignment 3:
 
-              This assignment has 2 parts to it. First part is Queries with Relational Algebra
-              problem sets. The second part is Accessing Fake Book Data From Java
+              This assignment has 2 parts to it. First part is Queries with
+              Relational Algebra problem sets. The second part is Accessing 
+              Fake Book Data From Java.
+              
+              
+Assignment 4:
+
+              A short assignment to provide practice designing relational tables 
+              using functional dependencies and normal forms.
+              
+              
               
               
