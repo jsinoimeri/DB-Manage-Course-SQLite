@@ -51,7 +51,11 @@ Assignment 4:
 
               A short assignment to provide practice designing relational tables 
               using functional dependencies and normal forms.
+        
               
-              
-              
+Assignment 5:
+
+              This assignment provides practice developing database tables with
+              basic SQL feature by building a java application to make the
+              experience more enjoyable.
               
